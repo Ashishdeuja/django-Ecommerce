@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -149,16 +149,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+CART_SESSION_ID = 'cart'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static"
-]
-
-STATIC_ROOT = BASE_DIR / 'staticfiles/'
-
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL='/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -168,9 +164,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CART_SESSION_ID = "cart"
 
 # Braintree settings
-BRAINTREE_MERCHANT_ID = 'rj3z3ypnvw2rmn3w'  # Merchant ID
-BRAINTREE_PUBLIC_KEY = 'vq9t79kf7dz9z63j'  # Public Key
-BRAINTREE_PRIVATE_KEY = '85dd3bc580e7bebbd5baa2846c9f7688'  # Private key
+BRAINTREE_MERCHANT_ID = '7f7bpcg2qgq3hxpy'
+BRAINTREE_PUBLIC_KEY = '82rs5tc6rsmk4vrj' 
+BRAINTREE_PRIVATE_KEY = '0ac59d1b702760653510dd977fc68800'
+
 import braintree
 
 BRAINTREE_CONF = braintree.Configuration(
